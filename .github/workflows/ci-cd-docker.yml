@@ -44,4 +44,5 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push your-dockerhub-username/your-image-name:latest
+          docker push swapna111/my-app:latest
+
