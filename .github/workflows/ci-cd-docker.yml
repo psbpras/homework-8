@@ -26,7 +26,7 @@ jobs:
           python -m unittest discover -s . -p "test_*.py"
 
   build-and-push:
-    needs: test  # Ensures tests pass before building and pushing the Docker image
+    needs: test  # Ensures tests pass before building and pushing to the Docker image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
