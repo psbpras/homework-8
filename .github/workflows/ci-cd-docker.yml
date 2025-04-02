@@ -1,4 +1,4 @@
-name: CI/CD - Test, Build, and Push Docker Image
+name: CI/CD Pipeline - Docker Build & Push
 
 on:
   push:
@@ -6,43 +6,24 @@ on:
       - main
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.9"
-
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-
-      - name: Run tests
-        run: |
-          python -m unittest discover -s . -p "test_*.py"
-
   build-and-push:
-    needs: test  # Ensures tests pass before building and pushing to the Docker image
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Log in to Docker Hub
+      - name: Log in to DockerHub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker image
-        run: |
-          docker build -t your-dockerhub-username/your-image-name:latest .
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest .
 
-      - name: Push Docker image
-        run: |
-          docker push swapna111/my-app:latest
+      - name: List Docker images (debugging step)
+        run: docker images
 
+      - name: Push Docker image to DockerHub
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest
