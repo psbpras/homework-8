@@ -12,4 +12,4 @@ This project implements a CI/CD pipeline using GitHub Actions to automate:
    git clone https://github.com/your-username/your-repo.git
    cd your-repo
 
-<img width="957" alt="{FDA5FB31-C549-45E3-86FF-E453D702944A}" src="https://github.com/user-attachments/assets/3a9bcef8-b725-4b8f-87da-62688b7b152e" />
+<img width="960" alt="{DCA8990B-9DCA-4B63-B07B-917C501D66FD}" src="https://github.com/user-attachments/assets/0e9091c9-6f26-4d91-aed6-de63b143e821" />
